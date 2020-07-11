@@ -3,12 +3,7 @@ module.exports = {
     './src/**/*.njk',
   ],
   theme: {
-    extend: {
-      screens: {
-        'print': {'raw': 'print'},
-        // => @media  print { ... }
-      }
-    }
+    extend: {},
   },
   variants: {},
   plugins: [],

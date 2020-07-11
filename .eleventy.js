@@ -7,7 +7,9 @@ module.exports = function (eleventyConfig) {
     }).toFormat('LLLL d, y');
   });
 
-  eleventyConfig.addPassthroughCopy("./src/robots.txt");
+  eleventyConfig.addPassthroughCopy("./src/robots.txt")
+  eleventyConfig.addWatchTarget('./src/css')
+  eleventyConfig.addWatchTarget('./tailwind.config.js')
 
   return {
     dir: {
