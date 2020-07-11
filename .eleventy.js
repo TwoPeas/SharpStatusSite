@@ -16,7 +16,7 @@ module.exports = function (eleventyConfig) {
       includes: '_includes',
     },
     passthroughFileCopy: true,
-    templateFormats: ['njk', 'md'],
+    templateFormats: ['njk', 'md', 'js'],
     htmlTemplateEngine: 'njk',
     markdownTemplateEngine: 'njk',
   }
