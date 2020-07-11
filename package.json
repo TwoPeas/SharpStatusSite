@@ -1,0 +1,32 @@
+{
+  "name": "SharpStatusSite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build:site": "eleventy",
+    "build": "npm-run-all clean build:site",
+    "watch:site": "eleventy  --serve --port=8181",
+    "watch": "npm-run-all clean watch:site",
+    "start": "npm run watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TwoPeas/SharpStatusSite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TwoPeas/SharpStatusSite/issues"
+  },
+  "homepage": "https://github.com/TwoPeas/SharpStatusSite#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^0.11.0",
+    "luxon": "^1.24.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.1",
+    "tailwindcss": "^1.4.6"
+  }
+}
