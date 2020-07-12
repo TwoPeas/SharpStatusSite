@@ -1,4 +1,4 @@
-const http = require('https');
+const https = require('https');
 
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
@@ -12,14 +12,24 @@ module.exports = async function (context, req) {
             'Authorization': 'token ' + process.env["ButtonDownToken"]
         }
     }
+    
+    const request = https.request(options, (res) => {
+        let data = ''
+         res.on('data', (chunk) => {
+           data += chunk.toString();
+         });
+         res.on('end', () => {
+            context.res = {
+                body: data
+            };
+         })
+       });
+       
+    request.on('error', (e) => {
+        context.res = {
+            body: 'error'
+        }
+    });
 
-    let request = http.request(options, (res) => {
-        res.on('data', (d) => {
-            response += d;
-        })
-    })
-
-    context.res = {
-        body: response
-    };
+    request.end()
 };
