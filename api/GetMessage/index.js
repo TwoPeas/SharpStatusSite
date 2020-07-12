@@ -3,7 +3,7 @@ const https = require('https');
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
-    const data = JSON.stringify({
+    const msg = JSON.stringify({
         "email": "ben.hyrman+test1@gmail.com",
         "referrer_url": "sharpstatus.com",
         "metadata": {},
@@ -20,7 +20,7 @@ module.exports = async function (context, req) {
         headers: {
             'Authorization': 'token ' + process.env["ButtonDownToken"],
             'Content-Type': 'application/json',
-            'Content-Length': data.length        
+            'Content-Length': msg.length        
         }
     }
 
@@ -30,16 +30,17 @@ module.exports = async function (context, req) {
          res.on('data', (chunk) => {
            data += chunk.toString();
          });
+         res.on('end', () => {
+            context.res = {
+                body: data
+            }
+        });
        });
        
     request.on('error', (e) => {
         data = 'error'
     });
 
-    request.write(data)
+    request.write(msg)
     request.end()
-
-    context.res = {
-        body: data
-    };
 };
